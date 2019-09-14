@@ -7,13 +7,11 @@ GIT
 
 GIT
   remote: https://github.com/babelian/service_protocol.git
-  revision: d32bfda399fbf9e8b5bb0ef98d8aab30749d0bc2
-  tag: v1.0.0
+  revision: 1a4cdf62841b9b5e62845791c9c514ed19f679b7
+  tag: v1.1.0
   specs:
-    service_protocol (1.0.0)
+    service_protocol (1.1.0)
       rack (>= 2.0.0)
-      redis (= 4.1.0)
-      redis-queue (= 0.1.0)
       request_store (>= 1.4.1)
 
 PATH
@@ -23,7 +21,7 @@ PATH
       redis (= 4.1.0)
       redis-queue (= 0.1.0)
       request_store (>= 1.4.1)
-      service_protocol (>= 1.0.0)
+      service_protocol (>= 1.1.0)
 
 GEM
   remote: https://rubygems.org/

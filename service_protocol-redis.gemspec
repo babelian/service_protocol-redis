@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files = Dir.glob('{lib}/**/*')
   s.require_paths = %w[lib]
 
-  s.add_runtime_dependency 'service_protocol', '>= 1.0.0'
+  s.add_runtime_dependency 'service_protocol', '>= 1.1.0'
 
   s.add_runtime_dependency 'redis', '4.1.0'
   s.add_runtime_dependency 'redis-queue', '0.1.0'
