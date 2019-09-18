@@ -1,16 +1,9 @@
 GIT
-  remote: https://github.com/babelian/ruby_extensions.git
-  revision: cd8362dc3a04f508c131597a9d7c31ac8574f9bd
-  tag: v1.11.1
-  specs:
-    ruby_extensions (1.11.1)
-
-GIT
   remote: https://github.com/babelian/service_protocol.git
-  revision: 79a1e59e3fe0eb50251646d7f61f362add652828
-  tag: v1.1.1
+  revision: a877278e7609f0acb5d2c5f38037d5e5652809a2
+  tag: v1.1.2
   specs:
-    service_protocol (1.1.1)
+    service_protocol (1.1.2)
       rack (>= 2.0.0)
       request_store (>= 1.4.1)
 
@@ -74,7 +67,6 @@ DEPENDENCIES
   rack-test (= 0.8.3)
   rake (= 12.3.2)
   rspec (= 3.7.0)
-  ruby_extensions!
   service_protocol!
   service_protocol-redis!
   simplecov (= 0.16.1)
