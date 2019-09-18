@@ -7,7 +7,7 @@ require 'request_store'
 RSpec.describe ServiceProtocol::Redis::Client do
   module TestNamespace
     # Test class
-    class TestAction
+    class TestOperation
       class << self
         include ServiceProtocol::Redis::Connection
 
@@ -25,7 +25,7 @@ RSpec.describe ServiceProtocol::Redis::Client do
   end
 
   let(:queue_name) { 'api.service' }
-  let(:operation) { "#{queue_name}:test_namespace/test_action" }
+  let(:operation) { "#{queue_name}:test_namespace/test_operation" }
 
   describe 'integration' do
     include ServiceProtocol::Redis::Connection
@@ -65,17 +65,17 @@ RSpec.describe ServiceProtocol::Redis::Client do
         default_meta.merge(operator: '+')
       end
 
-      let(:context) do
+      let(:output) do
         described_class.call(operation, params, meta)
       end
 
       it 'waits for a response' do
-        expect(context).to eq(equals: 3)
+        expect(output).to eq(equals: 3)
       end
 
       it 'server does not cache requests and responses' do
         params[:one] = 2
-        expect(context).to eq(equals: 4)
+        expect(output).to eq(equals: 4)
       end
     end
 
@@ -84,12 +84,12 @@ RSpec.describe ServiceProtocol::Redis::Client do
         { key: 'x', value: 'y' }
       end
 
-      let(:context) do
+      let(:output) do
         described_class.queue(operation, params, meta)
       end
 
       it 'process asyncronously' do
-        expect(context).to eq({})
+        expect(output).to eq({})
 
         expect(set_value).to eq(nil)
         sleep(1)

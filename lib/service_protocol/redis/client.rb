@@ -7,6 +7,7 @@ module ServiceProtocol
   module Redis
     # Redis based client for RPC requests
     class Client < BaseClient
+      DEFAULT_TIMEOUT = 2
       include Connection
 
       def call
@@ -28,7 +29,7 @@ module ServiceProtocol
       end
 
       def timeout
-        @timeout ||= meta[:timeout] || 0
+        @timeout ||= meta[:timeout] || DEFAULT_TIMEOUT
       end
 
       #
@@ -36,7 +37,7 @@ module ServiceProtocol
       #
 
       def request
-        h = { action: action, params: params, meta: meta }
+        h = { operation: operation, params: params, meta: meta }
         h[:meta][:service_protocol_token] = token
         h[:reply_to] = reply_to unless queued
         h

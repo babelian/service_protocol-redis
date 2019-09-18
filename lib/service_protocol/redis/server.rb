@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'service_protocol/proxy_action'
 require 'service_protocol/redis/connection'
 
 module ServiceProtocol
@@ -55,8 +54,8 @@ module ServiceProtocol
         request[:meta][:service_protocol_token]
       end
 
-      def action
-        request[:action]
+      def operation
+        request[:operation]
       end
 
       def params
@@ -76,7 +75,7 @@ module ServiceProtocol
       end
 
       def response
-        @response ||= ServiceProtocol::ProxyAction.call(action, params, meta)
+        @response ||= ServiceProtocol::Proxy.call(operation, params, meta)
       end
 
       #

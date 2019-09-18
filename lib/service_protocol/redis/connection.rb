@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require 'redis'
 require 'redis/queue'
+require 'redis-queue'
 
 module ServiceProtocol
   module Redis
@@ -8,7 +10,6 @@ module ServiceProtocol
     module Connection
       def redis
         @redis ||= begin
-          require 'redis'
           ::Redis.new(
             url: ENV['REDIS_URL'] || 'redis://redis/0' # , logger: Logger.new(STDOUT)
           )
@@ -17,7 +18,6 @@ module ServiceProtocol
 
       def redis_queue
         @redis_queue ||= begin
-          require 'redis-queue'
           ::Redis::Queue.new(queue_name, "#{queue_name}:processing", redis: redis)
         end
       end
